@@ -1,0 +1,23 @@
+{
+  "name": "testrunner",
+  "version": "1.0.0",
+  "description": "Simple JavaScript test tool",
+  "main": "testrunner.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mafumafuultu/testrunner.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "testing"
+  ],
+  "author": "mafumafuultu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mafumafuultu/testrunner/issues"
+  },
+  "homepage": "https://github.com/mafumafuultu/testrunner#readme"
+}
