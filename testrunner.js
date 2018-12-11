@@ -60,16 +60,14 @@ class ObjTest extends Test {
 class ArrTest extends Test {
 	static of(title, val) {return new ArrTest(title, val)}
 	eq(exp) {return super._print_(exp, v => this._same_(v, false))}
-	hasAll(exp) {
-		return super._print_(exp, v => (v.constructor.name === 'Array' ? v : [v]).map(o => this.val.includes(o)).every(r => r) );
-	}
+	hasAll(exp) {return super._print_(exp, v => (v.constructor.name === 'Array' ? v : [v]).map(o => this.val.includes(o)).every(r => r) )}
 	isThanRerationsip(mode) {
 		let f = [
 			[(a, i)=>a[i-1]< a[i], 'lt', '<'],
 			[(a, i)=>a[i-1]> a[i], 'gt', '>'],
 			[(a, i)=>a[i-1]<=a[i], 'le', '<='],
 			[(a, i)=>a[i-1]>=a[i], 'ge', '>=']
-		].reduce((fn, a) => a.includes(mode, 1) ? a[0] : fn, ()=>false);
+		].reduce((fn, a) => a.includes(mode, 1) ? a[0] : fn, () => false);
 		let flg = true, rmNaN = this.val.reduce((a, v) => ( isNaN(Number(v)) ? void 0 : a.push(Number(v)), a), []);
 		for (let i = 1, l = rmNaN.length; i < l; i++) flg &= f(rmNaN, i);
 		return super._print_(flg, Boolean);
@@ -78,7 +76,7 @@ class ArrTest extends Test {
 
 module.exports = exports = {
 	testRunner : (title, fn) => {
-		console.group(`Running : ${title}`);
+		console.groupCollapsed(`Running : ${title}`);
 		try{fn()}catch(e){console.log(e)}
 		console.groupEnd(title);
 	},
