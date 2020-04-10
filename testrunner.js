@@ -2,6 +2,7 @@
 * Test runner js
 * author : mafumafuultu
 * LICENSE : MIT
+* version : 0.0.2
 */
 class Test {
 	constructor(title, val) {
@@ -15,6 +16,9 @@ class Test {
 	gt(exp) {return this._noimpl_('gt')}
 	le(exp) {return this._noimpl_('le')}
 	ge(exp) {return this._noimpl_('ge')}
+	isNull() {return this._print_(null, v => this.val === v)}
+	isUndefined() {return this._print_(undefined, v => this.val === v)}
+	likeNull() {return this._print_(null, v => this.val == v)}
 
 	_same_(exp, doSort = false) {
 		return Test.json(this.val, doSort) === Test.json(exp, doSort);
@@ -56,6 +60,11 @@ class ObjTest extends Test {
 	static of(title, val) {return new ObjTest(title, val)}
 	eq(exp) {return super._print_(exp, v => this._same_(v, true))}
 }
+class EmpTest extends Test {
+	static of(title, val) {return new EmpTest(title, val)}
+	is(exp) {return this._print_(exp, v => this.val === v)}
+	eq(exp) {return this._print_(exp, v => this.val === v)}
+}
 
 class ArrTest extends Test {
 	static of(title, val) {return new ArrTest(title, val)}
@@ -84,6 +93,7 @@ module.exports = exports = {
 		let val = typeof actor === 'function'
 			? actor()
 			: actor;
+		if (val == null) return EmpTest.of(title, val);
 		switch(val.constructor.name) {
 		case 'Number': return NumTest.of(title, val);
 		case 'Array': return ArrTest.of(title, val);

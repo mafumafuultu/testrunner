@@ -26,7 +26,7 @@ testRunner(testGroupName, () => {/* tests */});
 ```js
 /**
  * @param testName 'string'
- * @param actor `value` OR `() => value` 
+ * @param actor `value` OR `() => value`
  */
 test(testName, actor)
 ```
@@ -41,6 +41,24 @@ test('Test name', () => 10) // Number
 ### Run
 
 Functions that can be used depend on the type of actor.
+
+#### .isNull()
+
+```js
+test('', actor).isNull(); // actor === null
+```
+
+#### .isUndefined()
+
+```js
+test('', actor).isNull(); // actor === undefined
+````
+
+#### .likeNull()
+
+```js
+test('', actor).isNull(); // actor == null
+````
 
 #### .is(expect)
 
@@ -89,7 +107,7 @@ test('', actor).hasAll(expect);
 
 #### .isThanRerationsip(mode)
 ```js
-/** 
+/**
  * Skip in case of NaN
  * [a < b < c < d < e]
  *

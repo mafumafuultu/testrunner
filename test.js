@@ -66,5 +66,11 @@ testRunner('ArrTest', () => {
 	test('isThanRerationsip[a>c>b]_fail', [2,3,1]).isThanRerationsip('>');
 	test('isThanRerationsip[a>=a>=c]_done', [3,1,1]).isThanRerationsip('>=');
 	test('isThanRerationsip[a>=c>=b]_fail', [2,3,1]).isThanRerationsip('>=');
+});
 
+testRunner('EmpTest', () => {
+	test('isNull_done', () => null).isNull();
+	test('isUndefined_done', () => undefined).isUndefined();
+	test('likeNull_null_done', () => null).likeNull();
+	test('likeNull_undefined_done', () => undefined).likeNull();
 });
